@@ -357,15 +357,6 @@ export PATH="$PNPM_HOME:$PATH"
 print_ok "pnpm installed to ~/.local/share/pnpm"
 
 # ─────────────────────────────────────────────────────────────────────────────
-# WL-CLIP-PERSIST (not in Fedora repos — build via cargo)
-# ─────────────────────────────────────────────────────────────────────────────
-
-print_section "Installing wl-clip-persist via cargo"
-
-cargo install wl-clip-persist
-print_ok "wl-clip-persist installed"
-
-# ─────────────────────────────────────────────────────────────────────────────
 # FLATPAK APPS
 # Spotify, Discord, OBS Studio are not in Fedora official repos.
 # OBS is available as an RPM but Flathub is the OBS Project's recommended path.
