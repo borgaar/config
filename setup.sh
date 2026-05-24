@@ -75,9 +75,10 @@ print_section "Installing multimedia codecs & FFmpeg"
 
 # Replace the restricted ffmpeg-free stub with the full RPM Fusion build
 sudo dnf swap -y ffmpeg-free ffmpeg --allowerasing || true
-sudo dnf update -y @multimedia --setopt="install_weak_deps=False" \
+sudo dnf group upgrade -y Multimedia \
+    --setopt=install_weak_deps=False \
     --exclude=PackageKit-gstreamer-plugin
-sudo dnf update -y @sound-and-video
+sudo dnf group upgrade -y sound-and-video
 
 # GStreamer plugin bundles
 sudo dnf install -y \
