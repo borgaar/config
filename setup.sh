@@ -84,7 +84,6 @@ sudo dnf group install -y sound-and-video
 sudo dnf install -y \
     gstreamer1-plugins-bad-free \
     gstreamer1-plugins-bad-free-extras \
-    gstreamer1-plugins-bad-nonfree \
     gstreamer1-plugins-good \
     gstreamer1-plugins-good-extras \
     gstreamer1-plugins-base \
