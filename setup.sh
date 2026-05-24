@@ -269,8 +269,8 @@ sudo dnf install -y \
     opensc \
     gnupg2 \
     gnupg2-smime \
-    pinentry-gtk \
-    scdaemon
+    pinentry-qt \
+    gnupg2-scdaemon
 
 print_ok "DNF packages installed"
 
