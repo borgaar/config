@@ -206,7 +206,7 @@ sudo dnf install -y \
     jq \
     \
     `# ── Language servers (LSPs) ──────────────────────────────────` \
-    lua
+    lua \
     \
     `# ── CLI networking & diagnostics ────────────────────────────` \
     bind-utils \
