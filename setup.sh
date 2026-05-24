@@ -78,7 +78,7 @@ sudo dnf swap -y ffmpeg-free ffmpeg --allowerasing || true
 sudo dnf group upgrade -y multimedia \
     --setopt=install_weak_deps=False \
     --exclude=PackageKit-gstreamer-plugin
-sudo dnf group upgrade -y sound-and-video
+sudo dnf group install -y sound-and-video
 
 # GStreamer plugin bundles
 sudo dnf install -y \
