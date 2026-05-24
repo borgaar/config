@@ -18,6 +18,9 @@ NVIM_CONFIG_REPO="git@github.com:borgaar/nvim-config.git"
 # Swap multiplier (1.25x RAM)
 SWAP_MULTIPLIER="1.25"
 
+# Enable YubiKey stuff
+YUBIKEY="yes"
+
 # ─────────────────────────────────────────────────────────────────────────────
 # HELPERS
 # ─────────────────────────────────────────────────────────────────────────────
@@ -172,6 +175,10 @@ sudo dnf install -y \
     alacritty \
     zsh \
     starship \
+    cowsay \
+    sl \
+    hollywood \
+    cmatrix \
     \
     `# ── Editors ──────────────────────────────────────────────────` \
     neovim \
@@ -261,8 +268,30 @@ sudo dnf install -y \
     `# ── Gaming ───────────────────────────────────────────────────` \
     steam \
     qbittorrent
+    `# ── YubiKey ──────────────────────────────────────────────────` \
+    yubikey-manager \
+    yubikey-manager-qt \
+    pcsc-lite \
+    pcsc-lite-ccid \
+    pcsc-tools \
+    opensc \
+    gnupg2 \
+    gnupg2-smime \
+    pinentry-gtk \
+    scdaemon
 
 print_ok "DNF packages installed"
+
+# ─────────────────────────────────────────────────────────────────────────────
+# YUBIKEY — enable pcscd (smartcard daemon)
+# ─────────────────────────────────────────────────────────────────────────────
+
+if [[ "$YUBIKEY" == "yes" ]]; then
+    sudo systemctl enable --now pcscd.socket
+    print_ok "pcscd enabled (socket-activated)"
+else
+    print_warn "pcscd setup skipped (YUBIKEY=no)"
+fi
 
 # ─────────────────────────────────────────────────────────────────────────────
 # Docker
@@ -407,19 +436,30 @@ for dotfile in .zshrc .gitconfig; do
     fi
 done
 
-# ── .gnupg/sshcontrol ─────────────────────────────────────────────────────────
+# ── .gnupg/sshcontrol + optional scdaemon.conf ───────────────────────────────
 
 GNUPG_SRC="$CONFIG_DIR/.gnupg/sshcontrol"
 GNUPG_DEST="$HOME/.gnupg/sshcontrol"
 
+mkdir -p "$HOME/.gnupg"
+chmod 700 "$HOME/.gnupg"
+
 if [[ -f "$GNUPG_SRC" ]]; then
-    mkdir -p "$HOME/.gnupg"
-    chmod 700 "$HOME/.gnupg"
     rm -f "$GNUPG_DEST"
     ln -s "$GNUPG_SRC" "$GNUPG_DEST"
     print_ok "~/.gnupg/sshcontrol  →  $GNUPG_SRC"
 else
     print_warn "~/.gnupg/sshcontrol skipped (not found: $GNUPG_SRC)"
+fi
+
+if [[ "$YUBIKEY" == "yes" ]]; then
+    SCDAEMON_CONF="$HOME/.gnupg/scdaemon.conf"
+    if [[ ! -f "$SCDAEMON_CONF" ]]; then
+        echo "disable-ccid" > "$SCDAEMON_CONF"
+        print_ok "~/.gnupg/scdaemon.conf created (disable-ccid)"
+    else
+        print_warn "~/.gnupg/scdaemon.conf already exists — skipping"
+    fi
 fi
 
 print_ok "All symlinks done"
