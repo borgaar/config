@@ -15,8 +15,8 @@ CONFIG_DIR="$HOME/config"
 # Git remote for neovim config
 NVIM_CONFIG_REPO="git@github.com:borgaar/nvim-config.git"
 
-# Swap multiplier (1.25x RAM)
-SWAP_MULTIPLIER="1.25"
+# Swap multiplier
+SWAP_MULTIPLIER="1.4"
 
 # Enable YubiKey stuff
 YUBIKEY="yes"
