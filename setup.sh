@@ -147,7 +147,7 @@ print_section "Installing additional firmware"
 
 sudo dnf install -y fwupd
 sudo fwupdmgr -y refresh
-sudo fwupdmgr -y get-updates
+sudo fwupdmgr -y get-updates || true
 sudo fwupdmgr -y update
 
 print_ok "Firmware installed"
