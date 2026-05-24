@@ -259,7 +259,7 @@ sudo dnf install -y \
     \
     `# ── Gaming ───────────────────────────────────────────────────` \
     steam \
-    qbittorrent
+    qbittorrent \
     `# ── YubiKey ──────────────────────────────────────────────────` \
     yubikey-manager \
     yubikey-manager-qt \
