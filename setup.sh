@@ -280,8 +280,8 @@ print_ok "DNF packages installed"
 
 print_section "Installing Starship through Copr"
 
-sudo dnf copr enable atim/starship
-sudo dnf install starship
+sudo dnf copr enable -y atim/starship
+sudo dnf install -y starship
 
 print_ok "Installed Starship through Copr"
 
