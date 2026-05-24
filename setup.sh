@@ -168,7 +168,6 @@ sudo dnf install -y \
     `# ── Terminal & shell ─────────────────────────────────────────` \
     alacritty \
     zsh \
-    starship \
     cowsay \
     sl \
     cmatrix \
