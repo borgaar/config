@@ -63,7 +63,7 @@ sudo dnf install -y \
 flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
 
 # Pull AppStream metadata for KDE Discover
-sudo dnf groupupdate -y core
+sudo dnf group update -y "Core"
 
 # Full system upgrade first so drivers build against the running kernel
 sudo dnf upgrade -y --refresh
@@ -464,6 +464,16 @@ if [[ "$YUBIKEY" == "yes" ]]; then
 fi
 
 print_ok "All symlinks done"
+
+# ─────────────────────────────────────────────────────────────────────────────
+# START GPG-AGENT (SSH support) — needed to clone via SSH with YubiKey
+# ─────────────────────────────────────────────────────────────────────────────
+
+print_section "Starting gpg-agent with SSH support"
+
+gpgconf --launch gpg-agent
+export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
+print_ok "SSH_AUTH_SOCK=$SSH_AUTH_SOCK"
 
 # ─────────────────────────────────────────────────────────────────────────────
 # NEOVIM CONFIG
