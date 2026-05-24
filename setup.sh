@@ -145,15 +145,12 @@ fi
 
 print_section "Installing additional firmware"
 
-# RPM Fusion tainted repos contain firmware that can't ship in Fedora proper
-sudo dnf install -y \
-    "https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-tainted-$(rpm -E %fedora).noarch.rpm" \
-    "https://mirrors.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-tainted-$(rpm -E %fedora).noarch.rpm" \
-    || true
+sudo dnf install -y fwupd
+sudo fwupdmgr -y refresh
+sudo fwupdmgr -y get-updates
+sudo fwupdmgr -y update
 
-sudo dnf install -y '*-firmware' fwupd || true
-
-print_ok "Firmware packages installed"
+print_ok "Firmware installed"
 
 # ─────────────────────────────────────────────────────────────────────────────
 # MAIN DNF PACKAGE INSTALL
