@@ -174,7 +174,6 @@ sudo dnf install -y \
     starship \
     cowsay \
     sl \
-    hollywood \
     cmatrix \
     \
     `# ── Editors ──────────────────────────────────────────────────` \
@@ -211,7 +210,7 @@ sudo dnf install -y \
     jq \
     \
     `# ── Language servers (LSPs) ──────────────────────────────────` \
-    lua-language-server \
+    lua
     \
     `# ── CLI networking & diagnostics ────────────────────────────` \
     bind-utils \
@@ -228,7 +227,7 @@ sudo dnf install -y \
     httpie \
     openssh-clients \
     openvpn \
-    networkmanager-openvpn \
+    NetworkManager-openvpn \
     iproute \
     iproute-tc \
     iputils \
@@ -245,7 +244,7 @@ sudo dnf install -y \
     pciutils \
     usbutils \
     inxi \
-    neofetch \
+    fastfetch \
     duf \
     ncdu \
     psmisc \
@@ -278,6 +277,17 @@ sudo dnf install -y \
     scdaemon
 
 print_ok "DNF packages installed"
+
+# ─────────────────────────────────────────────────────────────────────────────
+# Install Starship
+# ─────────────────────────────────────────────────────────────────────────────
+
+print_section "Installing Starship through Copr"
+
+sudo dnf copr enable atim/starship
+sudo dnf install starship
+
+print_ok "Installed Starship through Copr"
 
 # ─────────────────────────────────────────────────────────────────────────────
 # YUBIKEY — enable pcscd (smartcard daemon)
