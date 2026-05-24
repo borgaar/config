@@ -1,0 +1,9 @@
+[user]
+	name = Borgar Barland
+	email = 142639383+borgaar@users.noreply.github.com
+
+[commit]
+  gpgsign = true
+
+[init]
+	defaultBranch = main
