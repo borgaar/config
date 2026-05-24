@@ -62,9 +62,6 @@ sudo dnf install -y \
 # Refresh Flathub (full, not the filtered Fedora variant)
 flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
 
-# Pull AppStream metadata for KDE Discover
-sudo dnf group upgrade -y "Core"
-
 # Full system upgrade first so drivers build against the running kernel
 sudo dnf upgrade -y --refresh
 
