@@ -270,6 +270,8 @@ sudo dnf install -y \
     gnupg2 \
     gnupg2-smime \
     pinentry-qt \
+    fido2-tools \
+    libfido2 \
     gnupg2-scdaemon
 
 print_ok "DNF packages installed"
@@ -504,6 +506,19 @@ if [[ "$SHELL" != "$ZSH_PATH" ]]; then
 else
     print_ok "zsh is already the default shell"
 fi
+
+# ─────────────────────────────────────────────────────────────────────────────
+# INSTALL ZSH PLUGINS
+# ─────────────────────────────────────────────────────────────────────────────
+
+print_section "Installing zsh plugins"
+
+mkdir -p ~/.zsh_plugins
+git clone https://github.com/zsh-users/zsh-autosuggestions.git ~/.zsh_plugins/zsh-autosuggestions
+git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ~/.zsh_plugins/zsh-syntax-highlighting
+git clone https://github.com/jeffreytse/zsh-vi-mode.git ~/.zsh_plugins/zsh-vi-mode
+
+print_ok "Installed zsh plugins"
 
 # ─────────────────────────────────────────────────────────────────────────────
 # DONE
