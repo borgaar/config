@@ -436,21 +436,22 @@ for dotfile in .zshrc .gitconfig; do
     fi
 done
 
-# ── .gnupg/sshcontrol + optional scdaemon.conf ───────────────────────────────
-
-GNUPG_SRC="$CONFIG_DIR/.gnupg/sshcontrol"
-GNUPG_DEST="$HOME/.gnupg/sshcontrol"
+# ── .gnupg/sshcontrol + gpg-agent.conf + optional scdaemon.conf ──────────────
 
 mkdir -p "$HOME/.gnupg"
 chmod 700 "$HOME/.gnupg"
 
-if [[ -f "$GNUPG_SRC" ]]; then
-    rm -f "$GNUPG_DEST"
-    ln -s "$GNUPG_SRC" "$GNUPG_DEST"
-    print_ok "~/.gnupg/sshcontrol  →  $GNUPG_SRC"
-else
-    print_warn "~/.gnupg/sshcontrol skipped (not found: $GNUPG_SRC)"
-fi
+for gnupg_file in sshcontrol gpg-agent.conf; do
+    SRC="$CONFIG_DIR/.gnupg/$gnupg_file"
+    DEST="$HOME/.gnupg/$gnupg_file"
+    if [[ -f "$SRC" ]]; then
+        rm -f "$DEST"
+        ln -s "$SRC" "$DEST"
+        print_ok "~/.gnupg/$gnupg_file  →  $SRC"
+    else
+        print_warn "~/.gnupg/$gnupg_file skipped (not found: $SRC)"
+    fi
+done
 
 if [[ "$YUBIKEY" == "yes" ]]; then
     SCDAEMON_CONF="$HOME/.gnupg/scdaemon.conf"
