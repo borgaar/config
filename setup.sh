@@ -470,6 +470,8 @@ print_section "Starting gpg-agent with SSH support"
 
 gpgconf --launch gpg-agent
 export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
+systemctl --user enable --now gpg-agent-ssh.socket
+
 print_ok "SSH_AUTH_SOCK=$SSH_AUTH_SOCK"
 
 # ─────────────────────────────────────────────────────────────────────────────
@@ -520,6 +522,16 @@ git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ~/.zsh_plugin
 git clone https://github.com/jeffreytse/zsh-vi-mode.git ~/.zsh_plugins/zsh-vi-mode
 
 print_ok "Installed zsh plugins"
+
+# ─────────────────────────────────────────────────────────────────────────────
+# SET NEW ORIGIN URL
+# ─────────────────────────────────────────────────────────────────────────────
+
+print_section "Set new URL for origin remote"
+
+git remote set-url origin git@github.com:borgaar/config.git
+
+print_ok "Done setting new URL for origin"
 
 # ─────────────────────────────────────────────────────────────────────────────
 # DONE
