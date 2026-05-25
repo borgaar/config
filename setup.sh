@@ -525,17 +525,4 @@ print_ok "Installed zsh plugins"
 # DONE
 # ─────────────────────────────────────────────────────────────────────────────
 
-echo ""
-echo "╔═════════════════════════════════════╗"
-echo "║         ✓  Setup complete!          ║"
-echo "╠═════════════════════════════════════╣"
-echo "║                                     ║"
-echo "║  Next steps:                        ║"
-echo "║                                     ║"
-echo "║                                     ║"
-echo "║  1. SET UP HIBERNATION              ║"
-echo "║                                     ║"
-echo "║  2. REBOOT                          ║"
-echo "║                                     ║"
-echo "╚═════════════════════════════════════╝"
-echo ""
+reboot
