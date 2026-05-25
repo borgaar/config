@@ -164,6 +164,7 @@ sudo dnf install -y \
     firefox \
     mpv \
     vlc \
+    vlc-plugins-all \
     \
     `# ── Terminal & shell ─────────────────────────────────────────` \
     alacritty \
