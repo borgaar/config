@@ -4,7 +4,7 @@ import = [
 ]
 
 [font]
-normal = { family = "FiraCode Nerd Font Mono" }
+normal = { family = "FiraMono Nerd Font Mono" }
 size = 12
 
 [window]
