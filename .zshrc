@@ -8,13 +8,9 @@ export BROWSER=firefox
 
 eval "$(starship init zsh)"
 
-. "/home/borgar/.acme.sh/acme.sh.env"
-
 . $HOME/.zsh_plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 . $HOME/.zsh_plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 . $HOME/.zsh_plugins/zsh-vi-mode/zsh-vi-mode.zsh
-
-. $HOME/.elan/env
 
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
 
