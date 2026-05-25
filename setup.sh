@@ -391,6 +391,9 @@ sudo chmod 600 /swapfile
 sudo mkswap /swapfile
 sudo swapon /swapfile
 
+sudo systemctl mask systemd-zram-setup@zram0.service
+sudo systemctl stop dev-zram0.swap
+
 if ! grep -q '/swapfile' /etc/fstab; then
     echo '/swapfile none swap defaults 0 0' | sudo tee -a /etc/fstab
 fi
